@@ -1,0 +1,8 @@
+name: SurvivelistChristmas
+version: '${project.version}'
+main: itzshmulik.survivelist.survivelistchristmas.SurvivelistChristmas
+api-version: 1.17
+authors: [ ItzShmulik ]
+commands:
+  npc:
+    description: Adds the actions for npc's
