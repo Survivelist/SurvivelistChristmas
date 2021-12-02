@@ -1,16 +1,13 @@
 package itzshmulik.survivelist.survivelistchristmas;
 
-import itzshmulik.survivelist.survivelistchristmas.Commands.CreateNpc;
 import itzshmulik.survivelist.survivelistchristmas.Commands.Christmas;
-import net.minecraft.server.level.ServerPlayer;
+import itzshmulik.survivelist.survivelistchristmas.Events.ClickEvent;
+import itzshmulik.survivelist.survivelistchristmas.Events.deathEvent;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public final class SurvivelistChristmas extends JavaPlugin {
 
-    private static List<ServerPlayer> npcs = new ArrayList<>();
     public static SurvivelistChristmas plugin;
 
     @Override
@@ -18,13 +15,12 @@ public final class SurvivelistChristmas extends JavaPlugin {
         // Plugin startup logic
 
         plugin = this;
-
-        getCommand("npc").setExecutor(new CreateNpc());
         getCommand("christmas").setExecutor(new Christmas());
-    }
 
-    public static  List<ServerPlayer> getNpcs() {
-        return npcs;
+        PluginManager pluginManager = this.getServer().getPluginManager();
+        pluginManager.registerEvents(new ClickEvent(), this);
+        pluginManager.registerEvents(new deathEvent(), this);
+        pluginManager.registerEvents(new plantEvent(), this);
     }
 
     public static SurvivelistChristmas getPlugin() {
