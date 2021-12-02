@@ -1,7 +1,7 @@
 package itzshmulik.survivelist.survivelistchristmas;
 
 import itzshmulik.survivelist.survivelistchristmas.Commands.CreateNpc;
-import itzshmulik.survivelist.survivelistchristmas.Events.MovementListener;
+import itzshmulik.survivelist.survivelistchristmas.Commands.Christmas;
 import net.minecraft.server.level.ServerPlayer;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,8 +20,7 @@ public final class SurvivelistChristmas extends JavaPlugin {
         plugin = this;
 
         getCommand("npc").setExecutor(new CreateNpc());
-        getServer().getPluginManager().registerEvents(new MovementListener(), this);
-
+        getCommand("christmas").setExecutor(new Christmas());
     }
 
     public static  List<ServerPlayer> getNpcs() {

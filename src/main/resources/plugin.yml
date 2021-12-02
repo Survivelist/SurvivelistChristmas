@@ -6,3 +6,5 @@ authors: [ ItzShmulik ]
 commands:
   npc:
     description: Adds the actions for npc's
+  christmas:
+    description: Opens the quests menu
