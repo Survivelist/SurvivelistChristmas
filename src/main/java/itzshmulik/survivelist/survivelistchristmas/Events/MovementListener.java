@@ -8,7 +8,10 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+
+import javax.swing.text.html.parser.Entity;
 
 public class MovementListener implements Listener {
 

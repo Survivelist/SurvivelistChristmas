@@ -67,7 +67,8 @@ public class CreateNpc implements CommandExecutor {
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cYou donm't have the permission to use that command!"));
                 }
 
-        }else{
+        }
+        else{
             sender.sendMessage("You have to be a player to use that command!");
         }
 
