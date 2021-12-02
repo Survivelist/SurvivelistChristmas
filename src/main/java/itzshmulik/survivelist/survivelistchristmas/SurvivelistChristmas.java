@@ -20,7 +20,6 @@ public final class SurvivelistChristmas extends JavaPlugin {
         PluginManager pluginManager = this.getServer().getPluginManager();
         pluginManager.registerEvents(new ClickEvent(), this);
         pluginManager.registerEvents(new deathEvent(), this);
-        pluginManager.registerEvents(new plantEvent(), this);
     }
 
     public static SurvivelistChristmas getPlugin() {

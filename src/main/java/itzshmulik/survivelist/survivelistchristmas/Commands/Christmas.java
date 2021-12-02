@@ -45,7 +45,7 @@ public class Christmas implements CommandExecutor {
 
             ItemStack ironSword = new ItemStack(Material.IRON_SWORD);
             ItemMeta ironSwordMeta = ironSword.getItemMeta();
-            ironSwordMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&eGet in the naughty list"));
+            ironSwordMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&eGetting in the naughty list"));
             ArrayList<String> ironSwordLore = new ArrayList<>();
             ironSwordLore.add(ChatColor.translateAlternateColorCodes('&', "&fKill 5 players"));
             ironSwordLore.add(ChatColor.translateAlternateColorCodes('&', "&fCompleted: " + "&e" + kills + " / 5"));
