@@ -1,7 +1,7 @@
 package itzshmulik.survivelist.survivelistchristmas;
 
 import itzshmulik.survivelist.survivelistchristmas.commands.ChristmasCommand;
-import itzshmulik.survivelist.survivelistchristmas.listeners.DeathListener;
+import itzshmulik.survivelist.survivelistchristmas.listeners.QuestListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -20,7 +20,7 @@ public final class SurvivelistChristmas extends JavaPlugin {
         //noinspection ConstantConditions
         getCommand("christmas").setExecutor(new ChristmasCommand(this));
 
-        getServer().getPluginManager().registerEvents(new DeathListener(), this);
+        getServer().getPluginManager().registerEvents(new QuestListener(), this);
     }
 
     public static SurvivelistChristmas getPlugin() {
