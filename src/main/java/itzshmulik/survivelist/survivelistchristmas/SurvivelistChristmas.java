@@ -1,28 +1,29 @@
 package itzshmulik.survivelist.survivelistchristmas;
 
-import itzshmulik.survivelist.survivelistchristmas.Commands.Christmas;
-import itzshmulik.survivelist.survivelistchristmas.Events.ClickEvent;
-import itzshmulik.survivelist.survivelistchristmas.Events.deathEvent;
-import org.bukkit.plugin.PluginManager;
+import itzshmulik.survivelist.survivelistchristmas.commands.ChristmasCommand;
+import itzshmulik.survivelist.survivelistchristmas.listeners.DeathListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * @since 1.0
+ * @author ItzShmulik
+ */
 public final class SurvivelistChristmas extends JavaPlugin {
 
-    public static SurvivelistChristmas plugin;
+    private static SurvivelistChristmas plugin;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
 
         plugin = this;
-        getCommand("christmas").setExecutor(new Christmas());
+        //noinspection ConstantConditions
+        getCommand("christmas").setExecutor(new ChristmasCommand(this));
 
-        PluginManager pluginManager = this.getServer().getPluginManager();
-        pluginManager.registerEvents(new ClickEvent(), this);
-        pluginManager.registerEvents(new deathEvent(), this);
+        getServer().getPluginManager().registerEvents(new DeathListener(), this);
     }
 
     public static SurvivelistChristmas getPlugin() {
-        return  plugin;
+        return plugin;
     }
 }

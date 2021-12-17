@@ -6,7 +6,7 @@
 
     <groupId>itzshmulik</groupId>
     <artifactId>SurvivelistChristmas</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SurvivelistChristmas</name>
@@ -15,6 +15,14 @@
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <pluginRepositories>
+        <!-- Needed for Java 16 Class shading -->
+        <pluginRepository>
+            <id>maven-snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
@@ -30,7 +38,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <!-- Needed when working with Java 16 -->
+                <version>3.3.0-SNAPSHOT</version>
+                <configuration>
+                    <filters>
+                        <filter>
+                            <artifact>*:templates</artifact>
+                            <excludes>
+                                <exclude>META-INF/MANIFEST.MF</exclude>
+                                <exclude>examples.yml</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                    <relocations>
+                        <relocation>
+                            <pattern>com.github.sanctum.templates</pattern>
+                            <shadedPattern>itzshmulik.survivelist.survivelistchristmas.templates</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -102,6 +128,17 @@
             <artifactId>spigot</artifactId>
             <version>1.17.1-R0.1-SNAPSHOT</version>
             <classifier>remapped-mojang</classifier> <!-- Comment this out for regular Spigot mappings -->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.the-h-team</groupId>
+            <artifactId>templates</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>22.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
