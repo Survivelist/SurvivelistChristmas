@@ -11,11 +11,9 @@ import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.projectiles.ProjectileSource;
 
 /**
@@ -44,15 +42,8 @@ public class QuestListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onSaplingPlantSuccess(PlayerInteractEvent e) {
-        if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-        final ItemStack itemInHand = e.getItem();
-        if (itemInHand == null || itemInHand.getType() == Material.SPRUCE_SAPLING) return;
-        // They definitely right-clicked with a spruce sapling, let's check the block now
-        //noinspection ConstantConditions
-        if (e.getClickedBlock().getRelative(e.getBlockFace()).getType() != Material.SPRUCE_SAPLING) {
-            return;
-        }
+    public void onSaplingPlantSuccess(BlockPlaceEvent e) {
+        if (e.getBlockPlaced().getType() != Material.SPRUCE_SAPLING) return;
         processNextTick(new QuestProcessor(e.getPlayer(), ChristmasQuest.QUEST_4));
     }
 
